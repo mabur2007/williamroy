@@ -1,0 +1,24 @@
+﻿@using Nodes
+@using Nodes.Components
+<div class="card">
+    <div class="card-header">
+        @team.Name
+    </div>
+    <div class="card-body">
+    <DragDropList TItem="NodeDTO"
+                    Team="Team"
+                   Context="player"
+                   Items="team.Nodes"
+                   AllowsDrag="true"
+                   Verify="(player)=> { return !string.IsNullOrEmpty(player.Name); }">
+        <ItemTemplate> 
+            <TeamComponent team="@player"></TeamComponent>
+        </ItemTemplate>
+    </DragDropList>
+    </div>
+</div>
+@code{
+    [Parameter]
+    public NodeDTO team { get; set; }
+
+}

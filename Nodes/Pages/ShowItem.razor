@@ -1,0 +1,20 @@
+﻿@using Components
+
+<li draggable="true" list-style-type: none>
+   
+    @if (Item.Nodes != null && Item.Nodes.Any())
+    {
+        <ul class="@Level" >
+            @foreach (var child in Item.Nodes)
+            {
+                @child.Name
+                <ShowItem Item=@child Level="@(Level + 1)" @key=child />
+            }
+        </ul>
+    }
+</li>
+
+@code {
+    [Parameter] public NodeDTO Item { get; set; }
+    [Parameter] public int Level { get; set; }
+}

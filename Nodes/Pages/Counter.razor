@@ -1,0 +1,102 @@
+﻿@page "/counter"
+@using Nodes.Components
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+@using Newtonsoft;
+@using System.IO;
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<div>
+    @foreach (var item in TopLevelItems)
+    {
+
+
+        <div>
+            @item.Name
+        </div>
+
+        <div>
+            <ShowItem Item=@item Level=1 @key=item />
+        </div>
+
+    }
+</div>
+
+<DragDropList TItem="NodeDTO"
+               Items="TopLevelItems"
+               Context="team"
+               AllowsDrag="true">
+    <ItemTemplate>
+        <TeamComponent team="@team"></TeamComponent>
+    </ItemTemplate>
+</DragDropList>
+<button @onclick="PrintJson">
+    Print Json
+</button>
+
+@code 
+{
+    public List<NodeDTO> TopLevelItems = new List<NodeDTO>();
+
+    private void PrintJson()
+    {
+        string ser1 = JsonSerializer.Serialize(TopLevelItems);
+        Console.WriteLine(ser1);
+
+        String line;
+        try
+        {
+            //Pass the file path and file name to the StreamReader constructor
+            //var stri = 
+            StreamReader sr = new StreamReader(@"C:\billroy\test.csv");
+            //Read the first line of text
+            line = sr.ReadLine();
+            //Continue to read until you reach end of file
+            while (line != null)
+            {
+                //write the line to console window
+                Console.WriteLine(line);
+                //Read the next line
+                line = sr.ReadLine();
+            }
+            //close the file
+            sr.Close();
+            Console.ReadLine();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Executing finally block.");
+        }
+
+        var oClass = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ser1);
+
+    }
+    
+
+
+
+    protected override void OnInitialized()
+    {
+        var test = new NodeDTO();
+        test.Name = "First";
+        test.Nodes.Add(new NodeDTO { Name = "Second", Nodes = new List<NodeDTO>()  });
+        var test2 = new NodeDTO();
+        test2.Name = "Third";
+        test2.Nodes.Add(new NodeDTO { Name = "Fourth", Nodes = new List<NodeDTO>() });
+        TopLevelItems.Add(test);
+        TopLevelItems.Add(test2);
+     
+    }
+
+   
+
+   
+    
+}
