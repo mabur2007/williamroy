@@ -30,24 +30,41 @@
         string ser1 = JsonSerializer.Serialize(TopLevelItems);
         Console.WriteLine(ser1);
 
-        var oClass = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ser1);
+  //      var oClass = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ser1);
+
+//        var testData = loadTestCSV();
+
+        // convert
+
+  //      var serialJson = Newtonsoft.Json.JsonConvert.SerializeObject(testData);
 
     }
-    
-
-
 
     protected override void OnInitialized()
     {
         var test = new NodeDTO();
         test.Name = "First";
-        test.Nodes.Add(new NodeDTO { Name = "Second", Nodes = new List<NodeDTO>()  });
+        test.Nodes.Add(new NodeDTO { Name = "Second", Nodes = new List<NodeDTO>() });
         var test2 = new NodeDTO();
         test2.Name = "Third";
         test2.Nodes.Add(new NodeDTO { Name = "Fourth", Nodes = new List<NodeDTO>() });
         TopLevelItems.Add(test);
         TopLevelItems.Add(test2);
-     
+
+    }
+
+    private List<RawFileDTO> loadTestCSV()
+    {
+        var rtnList = new List<RawFileDTO>();
+        rtnList.Add(new RawFileDTO { column1 = "a1", column2 = "b1", column3 = "c1", column4 = "d1"});
+        rtnList.Add(new RawFileDTO { column1 = "a2", column2 = "b2", column3 = "c2", column4 = "d2" });
+        rtnList.Add(new RawFileDTO { column1 = "a3", column2 = "b3", column3 = "c3", column4 = "d3" });
+        rtnList.Add(new RawFileDTO { column1 = "a4", column2 = "b4", column3 = "c4", column4 = "d4" });
+        rtnList.Add(new RawFileDTO { column1 = "a5", column2 = "b5", column3 = "c5", column4 = "d5" });
+        rtnList.Add(new RawFileDTO { column1 = "a6", column2 = "b6", column3 = "c6", column4 = "d6" });
+
+        return rtnList;
+    
     }
 
    
