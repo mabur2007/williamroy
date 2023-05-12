@@ -5,25 +5,9 @@
 @using Newtonsoft;
 @using System.IO;
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Json Convert</PageTitle>
 
-<h1>Counter</h1>
-
-<div>
-    @foreach (var item in TopLevelItems)
-    {
-
-
-        <div>
-            @item.Name
-        </div>
-
-        <div>
-            <ShowItem Item=@item Level=1 @key=item />
-        </div>
-
-    }
-</div>
+<h1>Converter</h1>
 
 <DragDropList TItem="NodeDTO"
                Items="TopLevelItems"
@@ -45,35 +29,6 @@
     {
         string ser1 = JsonSerializer.Serialize(TopLevelItems);
         Console.WriteLine(ser1);
-
-        String line;
-        try
-        {
-            //Pass the file path and file name to the StreamReader constructor
-            //var stri = 
-            StreamReader sr = new StreamReader(@"C:\billroy\test.csv");
-            //Read the first line of text
-            line = sr.ReadLine();
-            //Continue to read until you reach end of file
-            while (line != null)
-            {
-                //write the line to console window
-                Console.WriteLine(line);
-                //Read the next line
-                line = sr.ReadLine();
-            }
-            //close the file
-            sr.Close();
-            Console.ReadLine();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Exception: " + e.Message);
-        }
-        finally
-        {
-            Console.WriteLine("Executing finally block.");
-        }
 
         var oClass = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ser1);
 
