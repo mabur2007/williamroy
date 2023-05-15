@@ -43,11 +43,11 @@
     protected override void OnInitialized()
     {
         var test = new NodeDTO();
-        test.Name = "First";
-        test.Nodes.Add(new NodeDTO { Name = "Second", Nodes = new List<NodeDTO>() });
+        test.Name = "column1";
+        test.Nodes.Add(new NodeDTO { Name = "column2", Nodes = new List<NodeDTO>() });
         var test2 = new NodeDTO();
-        test2.Name = "Third";
-        test2.Nodes.Add(new NodeDTO { Name = "Fourth", Nodes = new List<NodeDTO>() });
+        test2.Name = "column3";
+        test2.Nodes.Add(new NodeDTO { Name = "column4", Nodes = new List<NodeDTO>() });
         TopLevelItems.Add(test);
         TopLevelItems.Add(test2);
 
