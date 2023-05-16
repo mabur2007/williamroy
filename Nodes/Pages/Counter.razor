@@ -1,9 +1,15 @@
 ﻿@page "/counter"
 @using Nodes.Components
-@using System.Text.Json;
-@using System.Text.Json.Serialization;
+//@using System.Text.Json;
+//@using System.Text.Json.Serialization;
 @using Newtonsoft;
 @using System.IO;
+//@using Newtonsoft.Json.Linq;
+@using Newtonsoft.Json;
+@using System.Dynamic;
+@using Newtonsoft.Json.Converters;
+@using System.Linq.Dynamic.Core;
+
 
 <PageTitle>Json Convert</PageTitle>
 
@@ -24,19 +30,61 @@
 @code 
 {
     public List<NodeDTO> TopLevelItems = new List<NodeDTO>();
+    public IQueryable<RawFileDTO> Employees;
 
     private void PrintJson()
     {
-        string ser1 = JsonSerializer.Serialize(TopLevelItems);
+        string ser1 = System.Text.Json.JsonSerializer.Serialize(TopLevelItems);
         Console.WriteLine(ser1);
+        desJson(ser1);
 
-  //      var oClass = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ser1);
+        var testCsv = loadTestCSV().AsQueryable();
 
-//        var testData = loadTestCSV();
+
+        var x = testCsv.Select("column1,count(*)").GroupBy("column1");
+
+        foreach (var i in x)
+        { 
+        Console.WriteLine(">>>>" + i.ToString());
+        }
+
+        //var y = testCsv.ToList().GroupBy(_ => _.column1);
+
+ //       var y = testCsv.ToList()
+ //      .GroupBy(x => new { x.column1})
+ //      .Select(y => new RawFileDTO(){
+ //          column1 = y.Key.column1,
+ //          column2 = y./
+//
+//       });
+        Console.WriteLine("==");
+
+        //string ser2 = System.Text.Json.JsonSerializer.Serialize(y);
+        //Console.WriteLine(ser2);
+
+
+
+        //             var deSer1 = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(ser1);
+        //
+        //             Console.WriteLine(deSer1.Name);
+        //var deSer1 = JsonSerializer.Deserialize<NodeDTO>(ser1);   
+        //var result = JObject.Parse(ser1);
+
+        //        deserialize_to_linq_to_json_jobject(ser1);
+
+        //       foreach (var v in oClass)
+        //       {
+        //           foreach (var i in v)
+        //           {
+        //               Console.WriteLine(i.ToString());
+        //           }
+        //       }
+
+        //        var testData = loadTestCSV();
 
         // convert
 
-  //      var serialJson = Newtonsoft.Json.JsonConvert.SerializeObject(testData);
+        //      var serialJson = Newtonsoft.Json.JsonConvert.SerializeObject(testData);
 
     }
 
@@ -57,13 +105,46 @@
     {
         var rtnList = new List<RawFileDTO>();
         rtnList.Add(new RawFileDTO { column1 = "a1", column2 = "b1", column3 = "c1", column4 = "d1"});
-        rtnList.Add(new RawFileDTO { column1 = "a2", column2 = "b2", column3 = "c2", column4 = "d2" });
-        rtnList.Add(new RawFileDTO { column1 = "a3", column2 = "b3", column3 = "c3", column4 = "d3" });
-        rtnList.Add(new RawFileDTO { column1 = "a4", column2 = "b4", column3 = "c4", column4 = "d4" });
-        rtnList.Add(new RawFileDTO { column1 = "a5", column2 = "b5", column3 = "c5", column4 = "d5" });
-        rtnList.Add(new RawFileDTO { column1 = "a6", column2 = "b6", column3 = "c6", column4 = "d6" });
+        rtnList.Add(new RawFileDTO { column1 = "a1", column2 = "b1", column3 = "c2", column4 = "d2" });
+        rtnList.Add(new RawFileDTO { column1 = "a1", column2 = "b2", column3 = "c3", column4 = "d3" });
+        rtnList.Add(new RawFileDTO { column1 = "a2", column2 = "b2", column3 = "c4", column4 = "d4" });
+        rtnList.Add(new RawFileDTO { column1 = "a2", column2 = "b3", column3 = "c5", column4 = "d5" });
+        rtnList.Add(new RawFileDTO { column1 = "a3", column2 = "b3", column3 = "c6", column4 = "d6" });
 
         return rtnList;
+
+    }
+
+    public void desJson(string json)
+    {
+        //      var dataJson = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ExpandoObject>>
+        //      (json, new ExpandoObjectConverter());
+        //       IDictionary<string, JToken> Jsondata = JObject.Parse(json);
+        var deSer1 = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(json);
+
+        printNode(null, deSer1);
+    }
+
+
+
+    private void printNode(string? parent, dynamic? oObj)
+    {
+
+
+        if (parent == null)
+        {
+            parent = "";
+        }
+        foreach (var node in oObj)
+        {
+            Console.WriteLine(parent + ">>" + node.Name);
+            printNode(node.Name.ToString(), node.Nodes);
+
+ //           foreach (var element in node.Nodes)
+ //           {
+ //               Console.WriteLine(">" + element.Name);
+ //           }
+        }
     
     }
 
