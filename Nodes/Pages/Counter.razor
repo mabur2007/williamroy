@@ -41,11 +41,22 @@
         var testCsv = loadTestCSV().AsQueryable();
 
 
-        var x = testCsv.Select("column1,count(*)").GroupBy("column1");
+        //var x = testCsv.Select("new {column1, column2}").GroupBy("column1");
+        //var x = testCsv.GroupBy("column1").Select("new(count(column1) as count)");
+        var x = testCsv.Select("new {column1, column2, column3}").GroupBy("column1");
+        //Console.WriteLine(x);
+        string ser3 = System.Text.Json.JsonSerializer.Serialize(x);
+        Console.WriteLine("ser3>> " + ser3);
 
         foreach (var i in x)
-        { 
-        Console.WriteLine(">>>>" + i.ToString());
+        {
+            //        Console.WriteLine(">>>>" + i.column1.ToString(), i.column2.ToString());
+            //var xx = i.ToString();
+ //           var yy = (RawFileDTO)(i);
+ //           Console.WriteLine(yy.column1);
+            Console.WriteLine(i);
+            string ser2 = System.Text.Json.JsonSerializer.Serialize(i);
+            Console.WriteLine("ser2>> "+ser2);
         }
 
         //var y = testCsv.ToList().GroupBy(_ => _.column1);
