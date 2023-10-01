@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Tracker.domain.Entities;
 using Tracker.application.Interfaces;
 using Tracker.persistence.Repositories;
-using Tracker.infrastructure.Services;
+using Tracker.application.Services;
 
 namespace Tracker.api.Controllers
 {
@@ -42,7 +42,7 @@ namespace Tracker.api.Controllers
         {
             Console.WriteLine("Test");
             //return (IEnumerable<Vehicle>)Ok(await _vehicleService.GetAllAsync());
-            return await _vehicleService.GetAllAsync();
+            return await _vehicleService.GetAllVehiclesAsync();
         }
     }
 }

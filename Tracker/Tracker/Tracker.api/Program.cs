@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tracker.application.Interfaces;
-using Tracker.infrastructure.Services;
+using Tracker.application.Services;
 using Tracker.persistence;
 using Tracker.persistence.Repositories;
 

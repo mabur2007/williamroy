@@ -8,7 +8,7 @@ using Tracker.application.Interfaces;
 //using Tracker.application.Interfaces;
 using Tracker.domain.Entities;
 
-namespace Tracker.infrastructure.Services
+namespace Tracker.application.Services
 {
 
     public class VehicleService
@@ -21,7 +21,7 @@ namespace Tracker.infrastructure.Services
             _repo = repo;
         }
 
-        public async Task<IEnumerable<Vehicle>> GetAllAsync()
+        public async Task<IEnumerable<Vehicle>> GetAllVehiclesAsync()
         {
             return (IEnumerable<Vehicle>)await _repo.GetAllAsync();
             //return _mapper.Map<IEnumerable<ProductDTO>>(products);
