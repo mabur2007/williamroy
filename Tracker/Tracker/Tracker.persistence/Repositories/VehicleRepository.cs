@@ -21,7 +21,9 @@ namespace Tracker.persistence.Repositories
 
         public async Task<IEnumerable<Vehicle>> GetAllAsync()
         {
-            return await _context.Vehicle.ToListAsync();
+            //return await _context.Vehicle.ToListAsync();
+            return await _context.Vehicle.Include(_ => _.Address).ToListAsync();
+            //.Include(x => x.Events).ToListAsync();
         }
     }
 }

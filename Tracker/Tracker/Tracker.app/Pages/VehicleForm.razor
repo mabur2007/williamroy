@@ -1,0 +1,21 @@
+﻿@page "/vehicleform"
+
+@using MudBlazor
+
+@inherits ComponentBase
+
+<h3>Form Input</h3>
+
+<MudForm>
+    <MudTextField Label="Your name" Variant="Variant.Text" @bind-Value="name"></MudTextField>
+    <MudButton OnClick="Submit">Submit</MudButton>
+</MudForm>
+
+@code {
+    private string? name;
+
+    private void Submit()
+    {
+        Console.WriteLine($"Hello, {name}!");
+    }
+}

@@ -1,0 +1,46 @@
+﻿@page "/vehicleform"
+
+@using MudBlazor
+@using Tracker.UI.App.Data
+@inject PatchService PatchService
+
+@inherits ComponentBase
+
+<h3>Form Input</h3>
+
+<MudForm>
+    <MudTextField Label="Your name" Variant="Variant.Text" @bind-Value="name"></MudTextField>
+    <MudButton OnClick="Submit">Submit</MudButton>
+</MudForm>
+
+<MudSelect T="string" Label="Select an Item">
+    @if (patches == null)
+{
+    <MudProgressCircular Indeterminate="true" />
+}
+else
+{
+    @foreach (var item in patches)
+    {
+        <MudSelectItem Value="@item.PatchCode">@item.PatchCode</MudSelectItem>
+    }
+}
+</MudSelect>
+
+@code {
+    private string name; 
+    private PatchDTO[]? patches = null;
+
+    private void Submit()
+    {
+        Console.WriteLine($"Hello, {name}!");
+    }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        patches = await PatchService.GetPatchesAsync();
+        StateHasChanged();
+    }
+}

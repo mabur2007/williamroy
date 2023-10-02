@@ -1,0 +1,50 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+@using Mud.Shared
+@using Mud.Data
+
+<PageTitle>Weather forecast</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Weather forecast</MudText>
+<MudText Class="mb-8">This component demonstrates fetching data from the server.</MudText>
+@if (forecasts == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+        public string? RegNo { get; set; }
+        public string? Color { get; set; }
+        public string? Make { get; set; }
+        public string? Model { get; set; }
+    }
+
+
+{
+    <MudTable Items="vehicles" Hover="true" SortLabel="Sort By" Elevation="0">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<VehicleDTO, object>(x=>x.RegNo)">Date</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VehicleDTO, object>(x=>x.Color)">Temp. (C)</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VehicleDTO, object>(x=>x.Make)">Temp. (F)</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VehicleDTO, object>(x=>x.Model)">Summary</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Date">@context.RegNo</MudTd>
+            <MudTd DataLabel="Temp. (C)">@context.Color</MudTd>
+            <MudTd DataLabel="Temp. (F)">@context.Make</MudTd>
+            <MudTd DataLabel="Summary">@context.Model</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[]{50, 100}" />
+        </PagerContent>
+    </MudTable>
+}
+
+
+@code {
+    private VehicleDTO[]? vehicles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        vehicles = await ForecastService.GetVehiclesAsync();
+    }
+}

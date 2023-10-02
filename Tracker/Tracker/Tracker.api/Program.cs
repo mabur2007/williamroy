@@ -21,6 +21,8 @@ builder.Services.AddDbContext<TrackerDbContext>(options =>
 
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 builder.Services.AddScoped<VehicleService>();
+builder.Services.AddScoped<IPatchRepository, PatchRepository>();
+builder.Services.AddScoped<PatchService>();
 
 var app = builder.Build();
 
