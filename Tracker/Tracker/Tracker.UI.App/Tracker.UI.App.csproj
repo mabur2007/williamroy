@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ExifLib.Standard" Version="1.7.0" />
+    <PackageReference Include="Geocoding.net" Version="3.6.1" />
     <PackageReference Include="MudBlazor" Version="6.0.13" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2612" />
   </ItemGroup>
 
 </Project>

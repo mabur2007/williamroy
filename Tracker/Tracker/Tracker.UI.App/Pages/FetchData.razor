@@ -38,5 +38,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         vehicles = await VehicleService.GetVehiclesAsync();
+        //var addressList = await VehicleService.GetAddressesFromImage('C:\\Users\\mabur\\source\\repos\\williamroy\\Tracker\\Tracker\\Tracker.UI.App\\Data\test.jpg');
     }
 }

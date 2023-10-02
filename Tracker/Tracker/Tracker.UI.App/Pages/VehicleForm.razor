@@ -3,6 +3,7 @@
 @using MudBlazor
 @using Tracker.UI.App.Data
 @inject PatchService PatchService
+@inject VehicleService VehicleService
 
 @inherits ComponentBase
 
@@ -27,8 +28,23 @@ else
 }
 </MudSelect>
 
+<MudSelect T="string" Label="Select an Item">
+    @if (addressList == null)
+    {
+        <MudProgressCircular Indeterminate="true" />
+    }
+    else
+    {
+        @foreach (var item in addressList)
+        {
+            <MudSelectItem Value="@item">@item</MudSelectItem>
+        }
+    }
+</MudSelect>
+
 @code {
     private string name; 
+    private List<string> addressList = new();
     private PatchDTO[]? patches = null;
 
     private void Submit()
@@ -41,6 +57,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         patches = await PatchService.GetPatchesAsync();
+        addressList = await VehicleService.GetAddressesFromImage("C:\\Users\\mabur\\source\\repos\\williamroy\\Tracker\\Tracker\\Tracker.UI.App\\Data\\test.jpg");
         StateHasChanged();
     }
 }
