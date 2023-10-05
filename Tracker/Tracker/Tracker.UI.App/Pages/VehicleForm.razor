@@ -8,14 +8,14 @@
 @inherits ComponentBase
 
 
-
+<MudPaper Class="d-flex justify-start flex-grow-1 gap-4" Elevation="0">
 <MudContainer MaxWidth="MaxWidth.Small">
 <MudForm>
-    <h3>Form Input</h3>
     <MudTextField Label="Your name" Variant="Variant.Text" @bind-Value="name"></MudTextField>
     <MudButton OnClick="Submit">Submit</MudButton>
 </MudForm>
 </MudContainer>
+</MudPaper>
 
 <MudSelect T="string" Label="Select an Item">
     @if (patches == null)

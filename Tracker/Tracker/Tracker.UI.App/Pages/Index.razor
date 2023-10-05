@@ -17,14 +17,6 @@
                 </MudContainer>
             </MudMainContent>
         </MudTabPanel>
-    </MudTabs>
-</MudPaper>
-
-<MudPaper Elevation="2" Class="p-4 mt-4">
-    <MudTabs>
-        <MudTabPanel Text="Vehicles">
-            <MudNavLink Href="/fetchdata">Fetch Data</MudNavLink>
-        </MudTabPanel>
         <MudTabPanel Text="Add Vehicle">
             <MudMainContent>
                 <MudContainer MaxWidth="MaxWidth.Medium">
@@ -32,18 +24,17 @@
                 </MudContainer>
             </MudMainContent>
         </MudTabPanel>
-        <MudTabPanel Text="Sites">
-            <MudNavLink Href="/vehicleform">/vehicle Form</MudNavLink>
-        </MudTabPanel>
         <MudTabPanel Text="Reminders">
             <MudMainContent>
                 <MudContainer MaxWidth="MaxWidth.Medium">
-                   <FetchData/>
+                    <FetchData />
                 </MudContainer>
             </MudMainContent>
         </MudTabPanel>
     </MudTabs>
 </MudPaper>
+
+
 
 @code {
     public int spacing { get; set; } = 2;
