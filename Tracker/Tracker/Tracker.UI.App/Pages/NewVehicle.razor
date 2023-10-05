@@ -5,6 +5,8 @@
 @inject VehicleService VehicleService
 @inherits ComponentBase
 
+<MudGrid>
+<MudItem xs="12">
 <MudPaper Class="d-flex pa-4">
 <MudForm>
     <MudTextField Label="Make" Variant="Variant.Text" @bind-Value="vehicle.Make"></MudTextField>
@@ -13,19 +15,13 @@
     <MudTextField Label="Color" Variant="Variant.Text" @bind-Value="vehicle.Color"></MudTextField>
 </MudForm>
 </MudPaper>
-<MudPaper Class="d-flex pa-4">
-    <MudForm>
-        <MudTextField Label="Make" Variant="Variant.Text" @bind-Value="vehicle.Make"></MudTextField>
-        <MudTextField Label="Model" Variant="Variant.Text" @bind-Value="vehicle.Model"></MudTextField>
-        <MudTextField Label="Reg No" Variant="Variant.Text" @bind-Value="vehicle.RegNo"></MudTextField>
-        <MudTextField Label="Color" Variant="Variant.Text" @bind-Value="vehicle.Color"></MudTextField>
-    </MudForm>
-</MudPaper>
+</MudItem>
 <MudSpacer />
-<MudContainer>
+<MudItem xs="6">
 <MudSpacer />
 <MudButton OnClick="Submit" Variant="Variant.Filled">Save</MudButton>
-</MudContainer>
+</MudItem>
+</MudGrid>
 
 
 
