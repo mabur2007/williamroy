@@ -23,7 +23,25 @@ namespace Tracker.persistence.Repositories
         {
             //return await _context.Vehicle.ToListAsync();
             return await _context.Vehicle.Include(_ => _.Address).ToListAsync();
-            //.Include(x => x.Events).ToListAsync();
         }
+
+        public async Task DeleteAsync(Vehicle vehicle)
+        { 
+            _context.Vehicle.Remove(vehicle);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Vehicle vehicle)
+        {
+            _context.Vehicle.Update(vehicle);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddAsync(Vehicle vehicle)
+        {
+            _context.Vehicle.Add(vehicle);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

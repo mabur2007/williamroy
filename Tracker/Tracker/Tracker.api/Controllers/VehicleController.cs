@@ -8,13 +8,13 @@ namespace Tracker.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class VehicleController : ControllerBase
     {
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<VehicleController> _logger;
         private readonly VehicleService _vehicleService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+        public VehicleController(ILogger<VehicleController> logger,
                                          VehicleService vehicleService)
         {
             _logger = logger;
@@ -22,12 +22,20 @@ namespace Tracker.api.Controllers
         }
 
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet(Name = "GetVehicles")]
         public async Task<IEnumerable<Vehicle>> GetAsync()
         {
             Console.WriteLine("Test");
             //return (IEnumerable<Vehicle>)Ok(await _vehicleService.GetAllAsync());
             return await _vehicleService.GetAllVehiclesAsync();
+        }
+
+        [HttpPost(Name = "GetVehicles")]
+        public async Task<bool> PostAsync(Vehicle vehicle)
+        {
+            Console.WriteLine("Test");
+            //return (IEnumerable<Vehicle>)Ok(await _vehicleService.InsertAsync());
+            return await _vehicleService.InsertVehicleAsync(vehicle);
         }
     }
 }

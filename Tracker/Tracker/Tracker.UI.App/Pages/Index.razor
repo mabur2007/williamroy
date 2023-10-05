@@ -1,7 +1,50 @@
 ﻿@page "/"
-
 <PageTitle>Index</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
-<MudText Class="mb-8">Welcome to your new app, powered by MudBlazor!</MudText>
-<MudAlert Severity="Severity.Normal">You can find documentation and examples on our website here: <MudLink Href="https://mudblazor.com" Typo="Typo.body2" Color="Color.Inherit"><b>www.mudblazor.com</b></MudLink></MudAlert>
+<MudPaper Class="d-flex justify-start flex-grow-1 gap-4" Elevation="0">
+    <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+        <MudTabPanel Text="Add Vehicle">
+            <MudMainContent>
+                <MudContainer MaxWidth="MaxWidth.Medium">
+                    <NewVehicle/>
+                </MudContainer>
+            </MudMainContent>
+        </MudTabPanel>
+        <MudTabPanel Text="Reminders">
+            <MudMainContent>
+                <MudContainer MaxWidth="MaxWidth.Medium">
+                    <FetchData />
+                </MudContainer>
+            </MudMainContent>
+        </MudTabPanel>
+    </MudTabs>
+</MudPaper>
+
+<MudPaper Elevation="2" Class="p-4 mt-4">
+    <MudTabs>
+        <MudTabPanel Text="Vehicles">
+            <MudNavLink Href="/fetchdata">Fetch Data</MudNavLink>
+        </MudTabPanel>
+        <MudTabPanel Text="Add Vehicle">
+            <MudMainContent>
+                <MudContainer MaxWidth="MaxWidth.Medium">
+                    <NewVehicle />
+                </MudContainer>
+            </MudMainContent>
+        </MudTabPanel>
+        <MudTabPanel Text="Sites">
+            <MudNavLink Href="/vehicleform">/vehicle Form</MudNavLink>
+        </MudTabPanel>
+        <MudTabPanel Text="Reminders">
+            <MudMainContent>
+                <MudContainer MaxWidth="MaxWidth.Medium">
+                   <FetchData/>
+                </MudContainer>
+            </MudMainContent>
+        </MudTabPanel>
+    </MudTabs>
+</MudPaper>
+
+@code {
+    public int spacing { get; set; } = 2;
+}

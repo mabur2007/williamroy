@@ -49,7 +49,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracker.app", "Tracker.app\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{8BAE9BAC-E3BC-421E-A3F2-519A818A7C6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracker.UI.App", "Tracker.UI.App\Tracker.UI.App.csproj", "{8F114D93-875C-4EE2-9B0C-99A2F10823D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracker.UI.App", "Tracker.UI.App\Tracker.UI.App.csproj", "{8F114D93-875C-4EE2-9B0C-99A2F10823D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

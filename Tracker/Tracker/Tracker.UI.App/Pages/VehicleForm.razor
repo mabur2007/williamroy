@@ -7,12 +7,15 @@
 
 @inherits ComponentBase
 
-<h3>Form Input</h3>
 
+
+<MudContainer MaxWidth="MaxWidth.Small">
 <MudForm>
+    <h3>Form Input</h3>
     <MudTextField Label="Your name" Variant="Variant.Text" @bind-Value="name"></MudTextField>
     <MudButton OnClick="Submit">Submit</MudButton>
 </MudForm>
+</MudContainer>
 
 <MudSelect T="string" Label="Select an Item">
     @if (patches == null)
@@ -29,23 +32,24 @@ else
 </MudSelect>
 
 <MudSelect T="string" Label="Select an Item">
-    @if (addressList == null)
+    @if (vehicles == null)
     {
         <MudProgressCircular Indeterminate="true" />
     }
     else
     {
-        @foreach (var item in addressList)
+        @foreach (var item in vehicles)
         {
-            <MudSelectItem Value="@item">@item</MudSelectItem>
+            <MudSelectItem Value="@item.RegNo">@item.RegNo</MudSelectItem>
         }
     }
 </MudSelect>
 
 @code {
     private string name; 
-    private List<string> addressList = new();
+    //private List<string> addressList = new();
     private PatchDTO[]? patches = null;
+    private VehicleDTO[]? vehicles = null;
 
     private void Submit()
     {
@@ -57,7 +61,9 @@ else
     protected override async Task OnInitializedAsync()
     {
         patches = await PatchService.GetPatchesAsync();
-        addressList = await VehicleService.GetAddressesFromImage("C:\\Users\\mabur\\source\\repos\\williamroy\\Tracker\\Tracker\\Tracker.UI.App\\Data\\test.jpg");
+        vehicles = await VehicleService.GetVehiclesAsync();
+        //addressList = await VehicleService.GetAddressesFromImage("C:\\Users\\mabur\\source\\repos\\williamroy\\Tracker\\Tracker\\Tracker.UI.App\\Data\\test.jpg");
+        //addressList = null;
         StateHasChanged();
     }
 }

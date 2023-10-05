@@ -27,5 +27,12 @@ namespace Tracker.application.Services
             //return _mapper.Map<IEnumerable<ProductDTO>>(products);
         }
 
+        public async Task<bool> InsertVehicleAsync(Vehicle vehicle)
+        {
+            await _repo.AddAsync(vehicle);
+            return true;
+            //return _mapper.Map<IEnumerable<ProductDTO>>(products);
+        }
+
     }
 }

@@ -1,0 +1,38 @@
+﻿@page "/newvehicle"
+@using MudBlazor
+@using Tracker.UI.App.Data
+@inject PatchService PatchService
+@inject VehicleService VehicleService
+@inherits ComponentBase
+
+<MudForm>
+    <h3>Form Input</h3>
+    <MudTextField Label="Make" Variant="Variant.Text" @bind-Value="vehicle.Make"></MudTextField>
+    <MudTextField Label="Model" Variant="Variant.Text" @bind-Value="vehicle.Model"></MudTextField>
+    <MudTextField Label="Reg No" Variant="Variant.Text" @bind-Value="vehicle.RegNo"></MudTextField>
+    <MudTextField Label="Color" Variant="Variant.Text" @bind-Value="vehicle.Color"></MudTextField>
+</MudForm>
+<MudButton OnClick="Submit">Save</MudButton>
+
+
+@code {
+    private VehicleDTO? vehicle;
+
+    private async Task Submit()
+    {
+        await VehicleService.AddVehiclesAsync(vehicle);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        vehicle = new();
+        vehicle.Make = string.Empty;
+        vehicle.Model = string.Empty;
+        vehicle.Color = string.Empty;
+        vehicle.RegNo = string.Empty;
+
+        //patches = await PatchService.GetPatchesAsync();
+        //vehicles = await VehicleService.GetVehiclesAsync();
+        StateHasChanged();
+    }
+}
