@@ -1,41 +1,4 @@
 ﻿@page "/"
 <PageTitle>Index</PageTitle>
 
-<MudPaper Class="d-flex justify-start flex-grow-1 gap-4" Elevation="0">
-    <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
-        <MudTabPanel Text="Add Vehicle">
-            <MudMainContent>
-                <MudContainer MaxWidth="MaxWidth.Medium">
-                    <NewVehicle/>
-                </MudContainer>
-            </MudMainContent>
-        </MudTabPanel>
-        <MudTabPanel Text="Reminders">
-            <MudMainContent>
-                <MudContainer MaxWidth="MaxWidth.Medium">
-                    <FetchData />
-                </MudContainer>
-            </MudMainContent>
-        </MudTabPanel>
-        <MudTabPanel Text="Add Vehicle">
-            <MudMainContent>
-                <MudContainer MaxWidth="MaxWidth.Medium">
-                    <NewVehicle />
-                </MudContainer>
-            </MudMainContent>
-        </MudTabPanel>
-        <MudTabPanel Text="Reminders">
-            <MudMainContent>
-                <MudContainer MaxWidth="MaxWidth.Medium">
-                    <FetchData />
-                </MudContainer>
-            </MudMainContent>
-        </MudTabPanel>
-    </MudTabs>
-</MudPaper>
-
-
-
-@code {
-    public int spacing { get; set; } = 2;
-}
+<TabsPage/>

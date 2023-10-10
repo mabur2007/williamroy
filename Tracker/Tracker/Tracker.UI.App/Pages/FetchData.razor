@@ -24,6 +24,10 @@ else
             <MudTd DataLabel="Temp. (C)">@context.Make</MudTd>
             <MudTd DataLabel="Temp. (F)">@context.Model</MudTd>
             <MudTd DataLabel="Summary">@context.Color</MudTd>
+            <MudTd DataLabel="Actions">
+                <MudFab @onclick="@(()=>Update(context))" Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" Size="Size.Small" IconSize="Size.Small" />
+                <MudFab @onclick="@(()=>Delete(context))" Color="Color.Secondary" Icon="@Icons.Material.Filled.Delete" Size="Size.Small" IconSize="Size.Small" />
+            </MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[]{50, 100}" />
@@ -40,4 +44,15 @@ else
         vehicles = await VehicleService.GetVehiclesAsync();
         //var addressList = await VehicleService.GetAddressesFromImage('C:\\Users\\mabur\\source\\repos\\williamroy\\Tracker\\Tracker\\Tracker.UI.App\\Data\test.jpg');
     }
+
+    private void Update(VehicleDTO record)
+    {
+
+    }
+
+    private async Task Delete(VehicleDTO record)
+    {
+    }
+
+
 }

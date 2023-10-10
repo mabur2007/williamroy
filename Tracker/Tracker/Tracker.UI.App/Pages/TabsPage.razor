@@ -1,0 +1,23 @@
+﻿@page "/tabspage"
+<PageTitle>Tabs Page</PageTitle>
+
+<MudPaper Class="d-flex justify-start flex-grow-1 gap-4" Elevation="0">
+
+    <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+        <MudTabPanel Text="Add Vehicle">
+
+                    <NewVehicle/>
+
+        </MudTabPanel>
+        <MudTabPanel Text="Reminders" Width="650px">
+                    <FetchData/>
+        </MudTabPanel>
+    </MudTabs>
+
+</MudPaper>
+
+
+
+@code {
+    public int spacing { get; set; } = 2;
+}

@@ -1,0 +1,16 @@
+﻿.uniform-tabs .mud-tab {
+    flex: 1 1 0%; /* This ensures each tab takes up an equal amount of space */
+    text-align: center;
+}
+
+.mud-tabs {
+    display: flex;
+}
+
+.mud-tab {
+    flex: 1;
+}
+
+.mud-tab {
+    width: 500px;
+}
