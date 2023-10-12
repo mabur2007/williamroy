@@ -10,5 +10,6 @@ namespace Tracker.domain.Entities
         public string? Make { get; set; }
         public string? Model { get; set; }
         public Address? Address { get; set; }
+        //public Patch? Patch { get; set; }
     }
 }

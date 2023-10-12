@@ -13,6 +13,6 @@ namespace Tracker.domain.Entities
         public string? Address2 { get; set; }
         public string? Address3 { get; set; }
         public string? PostCode { get; set; }
-        public Patch? Patch { get; set; }
+        //public Patch? Patch { get; set; }
     }
 }

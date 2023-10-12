@@ -10,6 +10,7 @@ using Tracker.domain.Entities;
 
 namespace Tracker.application.Services
 {
+    // add method to read all vehicles
 
     public class VehicleService
     {

@@ -10,5 +10,6 @@ namespace Tracker.domain.Entities
     {
         public int PatchId { get; set; }
         public string? PatchCode { get; set; }
+        //public List<Address> Addresses { get; set; }
     }
 }
